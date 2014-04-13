@@ -23,29 +23,74 @@ using Microsoft.CodeAnalysis;
 
 namespace ICSharpCode.Roslyn.PatternMatching.CSharp
 {
-	/// <summary>
-	/// Static factory methods for creating C# pattern trees.
-	/// </summary>
 	public static partial class PatternFactory
 	{
+		public static IPattern<T> Any<T>() where T : SyntaxNode
+		{
+			return new PredicatePattern<T>(_ => true);
+		}
+		
+		public static IPattern<T> Any<T>(CaptureGroup<T> captureGroup) where T : SyntaxNode
+		{
+			return Capture(Any<T>(), captureGroup);
+		}
+		
+		public static IPattern<T> Predicate<T>(Func<T, bool> predicate) where T : SyntaxNode
+		{
+			if (predicate == null)
+				throw new ArgumentNullException("predicate");
+			return new PredicatePattern<T>(predicate);
+		}
+		
+		public static IPattern<T> Predicate<T>(Func<T, SemanticModel, bool> predicate) where T : SyntaxNode
+		{
+			if (predicate == null)
+				throw new ArgumentNullException("predicate");
+			return new SemanticPredicatePattern<T>(predicate);
+		}
+		
 		/// <summary>
 		/// Creates a pattern that captures the nodes it matches against into this capture group.
 		/// </summary>
-		public static IPattern<T> Capture<T>(this IPattern<T> pattern, CaptureGroup<T> captureGroup) where T : SyntaxNode
+		public static IPattern<T> Capture<T>(IPattern<T> pattern, CaptureGroup<T> captureGroup) where T : SyntaxNode
 		{
+			if (pattern == null)
+				throw new ArgumentNullException("pattern");
+			if (captureGroup == null)
+				throw new ArgumentNullException("captureGroup");
 			return new CaptureGroupPattern<T>(pattern, captureGroup);
 		}
 		
 		/// <summary>
 		/// Creates a pattern that captures the nodes it matches against into this capture group.
 		/// </summary>
-		public static IListPattern<T> Capture<T>(this IListPattern<T> pattern, CaptureGroup<T> captureGroup) where T : SyntaxNode
+		public static IListPattern<T> Capture<T>(IListPattern<T> pattern, CaptureGroup<T> captureGroup) where T : SyntaxNode
 		{
+			if (pattern == null)
+				throw new ArgumentNullException("pattern");
+			if (captureGroup == null)
+				throw new ArgumentNullException("captureGroup");
 			return new CaptureGroupPattern<T>(pattern, captureGroup);
 		}
 		
-		public static IListPattern<T> Repeat<T>(this IPatternElement<T> pattern, int minCount = 0, int maxCount = int.MaxValue) where T : SyntaxNode
+		public static IPattern<T> Optional<T>(IPattern<T> pattern) where T : SyntaxNode
 		{
+			if (pattern == null)
+				throw new ArgumentNullException("pattern");
+			return new OptionalPattern<T>(pattern);
+		}
+		
+		public static IListPattern<T> Optional<T>(IListPattern<T> pattern) where T : SyntaxNode
+		{
+			if (pattern == null)
+				throw new ArgumentNullException("pattern");
+			return new OptionalPattern<T>(pattern);
+		}
+		
+		public static IListPattern<T> Repeat<T>(IPatternElement<T> pattern, int minCount = 0, int maxCount = int.MaxValue) where T : SyntaxNode
+		{
+			if (pattern == null)
+				throw new ArgumentNullException("pattern");
 			return new RepeatPattern<T>(pattern, minCount, maxCount);
 		}
 		
@@ -67,6 +112,16 @@ namespace ICSharpCode.Roslyn.PatternMatching.CSharp
 		/// <typeparam name="TNode">The specific type of the element nodes.</typeparam>
 		/// <param name="nodes">A sequence of element nodes.</param>
 		public static IListPattern<TNode> List<TNode>(IEnumerable<IPatternElement<TNode>> nodes) where TNode : SyntaxNode
+		{
+			return new SequencePattern<TNode>(nodes.AsImmutableOrEmpty());
+		}
+		
+		/// <summary>
+		/// Creates a list of syntax nodes.
+		/// </summary>
+		/// <typeparam name="TNode">The specific type of the element nodes.</typeparam>
+		/// <param name="nodes">A sequence of element nodes.</param>
+		public static IListPattern<TNode> List<TNode>(params IPatternElement<TNode>[] nodes) where TNode : SyntaxNode
 		{
 			return new SequencePattern<TNode>(nodes.AsImmutableOrEmpty());
 		}

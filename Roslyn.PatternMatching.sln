@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.Roslyn.PatternM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.Roslyn.PatternMatching.Tests", "ICSharpCode.Roslyn.PatternMatching.Tests\ICSharpCode.Roslyn.PatternMatching.Tests.csproj", "{F5EBE431-523B-4457-A1BA-57DD019E8D51}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.Roslyn.PatternMatching.Generator", "ICSharpCode.Roslyn.PatternMatching.Generator\ICSharpCode.Roslyn.PatternMatching.Generator.csproj", "{4D0D61BA-8325-48B2-A7F4-DE74015FCA9C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,5 +24,9 @@ Global
 		{F5EBE431-523B-4457-A1BA-57DD019E8D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5EBE431-523B-4457-A1BA-57DD019E8D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5EBE431-523B-4457-A1BA-57DD019E8D51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D0D61BA-8325-48B2-A7F4-DE74015FCA9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D0D61BA-8325-48B2-A7F4-DE74015FCA9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D0D61BA-8325-48B2-A7F4-DE74015FCA9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D0D61BA-8325-48B2-A7F4-DE74015FCA9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

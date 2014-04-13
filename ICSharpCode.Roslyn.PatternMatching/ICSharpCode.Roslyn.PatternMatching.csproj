@@ -64,6 +64,8 @@
     <Compile Include="CSharp\PatternFactory.cs" />
     <Compile Include="IPattern.cs" />
     <Compile Include="ListMatch.cs" />
+    <Compile Include="OptionalPattern.cs" />
+    <Compile Include="PredicatePattern.cs" />
     <Compile Include="SequencePattern.cs" />
     <Compile Include="Match.cs" />
     <Compile Include="PatternExtensions.cs" />
@@ -76,6 +78,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ICSharpCode.Roslyn.PatternMatching.Generator\ICSharpCode.Roslyn.PatternMatching.Generator.csproj">
+      <Project>{4D0D61BA-8325-48B2-A7F4-DE74015FCA9C}</Project>
+      <Name>ICSharpCode.Roslyn.PatternMatching.Generator</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
