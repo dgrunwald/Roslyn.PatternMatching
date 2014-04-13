@@ -4,7 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # SharpDevelop 5.0
 VisualStudioVersion = 12.0.20827.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Roslyn.PatternMatching", "Roslyn.PatternMatching\Roslyn.PatternMatching.csproj", "{5EC798ED-58F5-4B46-8756-70F4D95D916C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.Roslyn.PatternMatching", "ICSharpCode.Roslyn.PatternMatching\ICSharpCode.Roslyn.PatternMatching.csproj", "{5EC798ED-58F5-4B46-8756-70F4D95D916C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ICSharpCode.Roslyn.PatternMatching.Tests", "ICSharpCode.Roslyn.PatternMatching.Tests\ICSharpCode.Roslyn.PatternMatching.Tests.csproj", "{F5EBE431-523B-4457-A1BA-57DD019E8D51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -16,5 +18,9 @@ Global
 		{5EC798ED-58F5-4B46-8756-70F4D95D916C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5EC798ED-58F5-4B46-8756-70F4D95D916C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5EC798ED-58F5-4B46-8756-70F4D95D916C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5EBE431-523B-4457-A1BA-57DD019E8D51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5EBE431-523B-4457-A1BA-57DD019E8D51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5EBE431-523B-4457-A1BA-57DD019E8D51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5EBE431-523B-4457-A1BA-57DD019E8D51}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
