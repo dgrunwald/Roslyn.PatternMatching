@@ -4,3 +4,4 @@ obj
 /lib/*.dll
 _ReSharper*/*
 packages/Microsoft.*
+packages/NUnit.*

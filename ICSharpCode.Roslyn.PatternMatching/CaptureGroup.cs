@@ -31,23 +31,7 @@ namespace ICSharpCode.Roslyn.PatternMatching
 	/// A capture group is used to store syntax nodes that are encountered during pattern matching for later retrieval.
 	/// The <c>CaptureGroup</c> instances serve as identifiers for the actual capture groups stored within the <see cref="Match"/> object.
 	/// </summary>
-	public class CaptureGroup<T> : CaptureGroup where T : SyntaxNode
-	{
-		public IPattern<T> Capture(IPattern<T> pattern)
-		{
-			return new CaptureGroupPattern<T>(pattern, this);
-		}
-		
-		public IListPattern<T> Capture(IListPattern<T> pattern)
-		{
-			return new CaptureGroupPattern<T>(pattern, this);
-		}
-		
-		public IPatternElement<T> Capture(IPatternElement<T> pattern)
-		{
-			return new CaptureGroupPattern<T>(pattern, this);
-		}
-	}
+	public class CaptureGroup<T> : CaptureGroup where T : SyntaxNode {}
 	
 	sealed class CaptureGroupPattern<T> : IPatternElement<T>, IListPattern<T>, IPattern<T> where T : SyntaxNode
 	{

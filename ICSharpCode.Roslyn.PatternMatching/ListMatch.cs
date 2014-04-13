@@ -107,12 +107,6 @@ namespace ICSharpCode.Roslyn.PatternMatching
 			backtrackingStack.Add(savepoint);
 		}
 		
-		internal void AddSavePoint(ref Match match)
-		{
-			var savepoint = new SavePoint(match.CheckPoint(), this.SyntaxIndex);
-			AddSavePoint(savepoint);
-		}
-		
 		internal void AddSavePoint(ref Match match, int data)
 		{
 			var savepoint = new SavePoint(match.CheckPoint(), this.SyntaxIndex);
